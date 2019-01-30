@@ -25,6 +25,10 @@
             <member name="bob" />
         </group>
 
+        <group name="mySystemAdmins">
+            <member name="bob" />
+        </group>
+
         <group name="myUsers">
             <member name="bob" />
             <member name="alice" />
@@ -42,7 +46,7 @@
                 <group name="myUsers" />
             </security-role>
             <security-role name="Administrator">
-                <group name="myAdmins" />
+                <group name="mySystemAdmins" />
             </security-role>
         </application-bnd>
     </application>

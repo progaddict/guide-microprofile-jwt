@@ -81,10 +81,12 @@ public class LoginBean {
     }
 
   private String buildJwt(String userName, Set<String> roles) throws Exception {
+      HashSet<String> jwtRoles = new HashSet<>(roles);
+      jwtRoles.add("Administrator");
         return JwtBuilder.create("jwtFrontEndBuilder")
                          .claim(Claims.SUBJECT, userName)
                          .claim("upn", userName) // MP-JWT defined subject claim
-                         .claim("groups", roles.toArray(new String[roles.size()])) // MP-JWT builds an array from this
+                         .claim("groups", jwtRoles.toArray(new String[jwtRoles.size()])) // MP-JWT builds an array from this
                          .claim("customClaim", "customValue")
                          .buildJwt()
                          .compact();
