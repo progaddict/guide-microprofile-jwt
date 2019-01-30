@@ -26,8 +26,26 @@
     <!-- The HTTP ports that the application will use. -->
     <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="${http.port}" httpsPort="${https.port}"/>
 
+    <basicRegistry id="basic" realm="BackendRealm">
+        <user name="bob" password="{xor}PTA9Lyg7" />  <!-- bobpwd -->
+        <group name="myAdmins">
+            <member name="bob" />
+        </group>
+    </basicRegistry>
+
+    <administrator-role>
+        <user>bob</user>
+        <group>myAdmins</group>
+    </administrator-role>
+
     <!-- The application containing the user and login endpoints. -->
-    <webApplication location="${app.name}" contextRoot="/" />
+    <webApplication location="${app.name}" contextRoot="/">
+        <application-bnd>
+            <security-role name="admin">
+                <group name="myAdmins"/>
+            </security-role>
+        </application-bnd>
+    </webApplication>
 
     <!-- The MP JWT configuration that injects the caller's JWT into a ResourceScoped bean for inspection. -->
     <mpJwt id="jwtUserConsumer" keyName="default" audiences="simpleapp" issuer="${jwt.issuer}"/>
