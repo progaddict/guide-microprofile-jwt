@@ -41,9 +41,6 @@
             <security-role name="user">
                 <group name="myUsers" />
             </security-role>
-            <security-role name="Administrator">
-                <group name="myAdmins" />
-            </security-role>
         </application-bnd>
     </application>
 
