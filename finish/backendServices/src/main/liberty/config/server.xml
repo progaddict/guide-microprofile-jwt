@@ -19,6 +19,10 @@
         <feature>mpMetrics-1.1</feature>
     </featureManager>
 
+    <administrator-role>
+        <group-access-id>group:http://openliberty.io/admin</group-access-id>
+    </administrator-role>
+
     <!-- This is the keystore that will be used by SSL and by JWT.
          The keystore is built using the maven keytool plugin -->
     <keyStore id="defaultKeyStore" location="keystore.jceks" type="JCEKS" password="secret" />
